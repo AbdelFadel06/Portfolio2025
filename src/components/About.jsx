@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation, Trans } from 'react-i18next'
 import profile2 from '../assets/profil3.jpeg'
 
 const About = () => {
     const [isVisible, setIsVisible] = useState(false)
+    const { t, i18n } = useTranslation('about')
 
     useEffect(() => {
         setIsVisible(true)
     }, [])
 
-    const skills = [
-        { name: "HTML", level: 90, color: "from-orange-500 to-red-500" },
-        { name: "CSS", level: 85, color: "from-blue-500 to-purple-500" },
-        { name: "JavaScript", level: 88, color: "from-yellow-400 to-yellow-600" },
-        { name: "React", level: 85, color: "from-cyan-500 to-blue-500" },
-        { name: "Python", level: 80, color: "from-blue-600 to-indigo-600" },
-        { name: "Tailwind", level: 90, color: "from-teal-400 to-cyan-500" },
-    ];
+    // Récupérer les compétences depuis les traductions
+    const skills = t('skills.items', { returnObjects: true })
 
-    const tools = ["VSCode", "Figma", "GitHub", "Postman",  "Vercel"];
+    // Couleurs fixes (ne changent pas avec la langue)
+    const skillColors = [
+        "from-orange-500 to-red-500",
+        "from-blue-500 to-purple-500",
+        "from-yellow-400 to-yellow-600",
+        "from-cyan-500 to-blue-500",
+        "from-blue-600 to-indigo-600",
+        "from-teal-400 to-cyan-500"
+    ]
 
-    const stats = [
-        { number: "10+", label: "Projets Réalisés" },
-        { number: "3+", label: "Années d'Expérience" },
-        { number: "15+", label: "Technologies Maîtrisées" },
-        { number: "100%", label: "Satisfaction Client" }
-    ];
+    const tools = t('tools.items', { returnObjects: true })
+    const stats = t('stats', { returnObjects: true })
+    const journeyParagraphs = t('journey.paragraphs', { returnObjects: true })
 
     return (
         <section id="about" className="min-h-screen bg-gray-50 py-12 lg:py-20 relative overflow-hidden">
@@ -35,13 +36,18 @@ const About = () => {
                 {/* En-tête */}
                 <div className={`text-center mb-16 lg:mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                     <span className="inline-block px-4 py-2 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
-                        À Propos de Moi
+                        {t('title')}
                     </span>
                     <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                        Passionné par le <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Développement Digital</span>
+                        <Trans
+                            i18nKey="about:main_title"
+                            components={{
+                                1: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" />
+                            }}
+                        />
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Développeur Full Stack créatif transformant des idées en expériences digitales exceptionnelles
+                        {t('subtitle')}
                     </p>
                 </div>
 
@@ -54,7 +60,7 @@ const About = () => {
                             <img
                                 className="w-full max-w-md lg:max-w-none h-auto rounded-2xl shadow-2xl relative z-10 transform group-hover:scale-105 transition-transform duration-500"
                                 src={profile2}
-                                alt="Développeur Full Stack Béninois"
+                                alt={t('title')}
                             />
                             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
                         </div>
@@ -66,22 +72,12 @@ const About = () => {
                         <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white">
                             <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                                 <span className="w-3 h-3 bg-blue-500 rounded-full mr-3"></span>
-                                Mon Parcours
+                                {t('journey.title')}
                             </h3>
                             <div className="space-y-4 text-gray-700 leading-relaxed">
-                                <p>
-                                    <strong>Développeur Full Stack passionné</strong> originaire du Bénin, je mets mon expertise
-                                    technique au service de projets innovants. Avec une solide expérience dans les technologies modernes,
-                                    je crée des solutions digitales qui allient performance et élégance.
-                                </p>
-                                <p>
-                                    Mon approche combine <strong>créativité et rigueur technique</strong>, me permettant de transformer
-                                    des concepts complexes en interfaces intuitives et expériences utilisateur fluides.
-                                </p>
-                                <p>
-                                    Toujours en veille technologique, j'aime relever de nouveaux défis et participer à des projets
-                                    qui repoussent les limites du possible dans l'écosystème digital africain et au-delà.
-                                </p>
+                                {journeyParagraphs.map((paragraph, index) => (
+                                    <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
+                                ))}
                             </div>
                         </div>
 
@@ -104,7 +100,7 @@ const About = () => {
                         <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white">
                             <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
                                 <span className="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
-                                Mes Compétences Techniques
+                                {t('skills.title')}
                             </h3>
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                 {skills.map((skill, index) => (
@@ -115,7 +111,7 @@ const About = () => {
                                         </div>
                                         <div className="w-full bg-gray-200 rounded-full h-2">
                                             <div
-                                                className={`h-2 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                                                className={`h-2 rounded-full bg-gradient-to-r ${skillColors[index]} transition-all duration-1000 ease-out`}
                                                 style={{
                                                     width: `${isVisible ? skill.level : 0}%`,
                                                     transitionDelay: `${index * 100}ms`
@@ -131,7 +127,7 @@ const About = () => {
                         <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white">
                             <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                                 <span className="w-3 h-3 bg-purple-500 rounded-full mr-3"></span>
-                                Mes Outils de Travail
+                                {t('tools.title')}
                             </h3>
                             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                                 {tools.map((tool, index) => (
@@ -157,16 +153,16 @@ const About = () => {
                             <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 text-white shadow-lg">
                                 <h4 className="font-bold text-lg mb-3 flex items-center">
                                     <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-                                    Langues
+                                    {t('languages.title')}
                                 </h4>
-                                <p className="text-blue-100">Français (Natif), Anglais (Courant)</p>
+                                <p className="text-blue-100">{t('languages.content')}</p>
                             </div>
                             <div className="bg-gradient-to-br from-gray-900 to-gray-700 rounded-2xl p-6 text-white shadow-lg">
                                 <h4 className="font-bold text-lg mb-3 flex items-center">
                                     <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-                                    Formation
+                                    {t('education.title')}
                                 </h4>
-                                <p className="text-gray-300">Bachelor en Informatique</p>
+                                <p className="text-gray-300">{t('education.content')}</p>
                             </div>
                         </div>
                     </div>

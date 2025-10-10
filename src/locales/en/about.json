@@ -1,0 +1,48 @@
+{
+  "title": "About Me",
+  "main_title": "Passionate about <1>Digital Development</1>",
+  "subtitle": "Creative Full Stack Developer transforming ideas into exceptional digital experiences",
+
+  "journey": {
+    "title": "My Journey",
+    "paragraphs": [
+      "<strong>Passionate Full Stack Developer</strong> from Benin, I put my technical expertise at the service of innovative projects. With solid experience in modern technologies, I create digital solutions that combine performance and elegance.",
+      "My approach combines <strong>creativity and technical rigor</strong>, allowing me to transform complex concepts into intuitive interfaces and smooth user experiences.",
+      "Always keeping up with technology trends, I enjoy taking on new challenges and participating in projects that push the boundaries of what's possible in the African digital ecosystem and beyond."
+    ]
+  },
+
+  "skills": {
+    "title": "My Technical Skills",
+    "items": [
+      { "name": "HTML", "level": 90 },
+      { "name": "CSS", "level": 85 },
+      { "name": "JavaScript", "level": 88 },
+      { "name": "React", "level": 85 },
+      { "name": "Python", "level": 80 },
+      { "name": "Tailwind", "level": 90 }
+    ]
+  },
+
+  "tools": {
+    "title": "My Work Tools",
+    "items": ["VSCode", "Figma", "GitHub", "Postman", "Vercel"]
+  },
+
+  "languages": {
+    "title": "Languages",
+    "content": "French (Native), English (Fluent)"
+  },
+
+  "education": {
+    "title": "Education",
+    "content": "Bachelor's Degree in Computer Science"
+  },
+
+  "stats": [
+    { "number": "10+", "label": "Projects Completed" },
+    { "number": "3+", "label": "Years of Experience" },
+    { "number": "15+", "label": "Mastered Technologies" },
+    { "number": "100%", "label": "Client Satisfaction" }
+  ]
+}

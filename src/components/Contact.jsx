@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -7,6 +8,8 @@ const Contact = () => {
         subject: '',
         message: ''
     });
+
+    const { t } = useTranslation('contact');
 
     const handleChange = (e) => {
         setFormData({
@@ -17,26 +20,30 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Traitement du formulaire ici
         console.log('Données du formulaire:', formData);
     };
 
     return (
-        <section className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8">
+        <section className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8" id='contact'>
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                        Travaillons <span className="text-gray-600">ensemble</span>
+                        <Trans
+                            i18nKey="contact:title"
+                            components={{
+                                1: <span className="text-gray-600" />
+                            }}
+                        />
                     </h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                        Discutons de votre projet et voyons comment je peux vous aider à le concrétiser.
+                        {t('subtitle')}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     <div className="lg:col-span-1 space-y-8 border rounded-2xl p-10 border-gray-300 overflow-x-hidden">
                         <div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-6">Coordonnées</h3>
+                            <h3 className="text-xl font-semibold text-gray-900 mb-6">{t('contact_info')}</h3>
 
                             <div className="space-y-6">
                                 <div className="flex items-start space-x-4">
@@ -46,8 +53,8 @@ const Contact = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500 mb-1">Email</p>
-                                        <p className="text-gray-900 font-medium ">abdelfadelsaliou@gmail.com</p>
+                                        <p className="text-sm text-gray-500 mb-1">{t('email')}</p>
+                                        <p className="text-gray-900 font-medium ">{t('email_value')}</p>
                                     </div>
                                 </div>
 
@@ -59,8 +66,8 @@ const Contact = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500 mb-1">Localisation</p>
-                                        <p className="text-gray-900 font-medium">Cotonou, Bénin</p>
+                                        <p className="text-sm text-gray-500 mb-1">{t('location')}</p>
+                                        <p className="text-gray-900 font-medium">{t('location_value')}</p>
                                     </div>
                                 </div>
 
@@ -71,8 +78,8 @@ const Contact = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500 mb-1">Disponibilité</p>
-                                        <p className="text-gray-900 font-medium">Lun - Ven, 9h - 18h</p>
+                                        <p className="text-sm text-gray-500 mb-1">{t('availability')}</p>
+                                        <p className="text-gray-900 font-medium">{t('availability_value')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +87,7 @@ const Contact = () => {
 
                         {/* Réseaux sociaux */}
                         <div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-6">Réseaux</h3>
+                            <h3 className="text-xl font-semibold text-gray-900 mb-6">{t('networks')}</h3>
                             <div className="flex space-x-4">
                                 {['LinkedIn', 'GitHub', 'Twitter'].map((social) => (
                                     <a
@@ -104,7 +111,7 @@ const Contact = () => {
                                 {/* Nom */}
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Nom complet *
+                                        {t('form.name')}
                                     </label>
                                     <input
                                         type="text"
@@ -114,14 +121,14 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500"
-                                        placeholder="Votre nom"
+                                        placeholder={t('form.name_placeholder')}
                                     />
                                 </div>
 
                                 {/* Email */}
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Email *
+                                        {t('form.email')}
                                     </label>
                                     <input
                                         type="email"
@@ -131,7 +138,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500"
-                                        placeholder="votre@email.com"
+                                        placeholder={t('form.email_placeholder')}
                                     />
                                 </div>
                             </div>
@@ -139,7 +146,7 @@ const Contact = () => {
                             {/* Sujet */}
                             <div>
                                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Sujet *
+                                    {t('form.subject')}
                                 </label>
                                 <input
                                     type="text"
@@ -149,14 +156,14 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500"
-                                    placeholder="Objet de votre message"
+                                    placeholder={t('form.subject_placeholder')}
                                 />
                             </div>
 
                             {/* Message */}
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Message *
+                                    {t('form.message')}
                                 </label>
                                 <textarea
                                     id="message"
@@ -166,7 +173,7 @@ const Contact = () => {
                                     required
                                     rows={6}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500 resize-none"
-                                    placeholder="Décrivez votre projet ou votre demande..."
+                                    placeholder={t('form.message_placeholder')}
                                 />
                             </div>
 
@@ -175,11 +182,11 @@ const Contact = () => {
                                 type="submit"
                                 className="w-full bg-gray-900 text-white py-4 px-6 rounded-lg font-semibold hover:bg-gray-800 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
                             >
-                                Envoyer le message
+                                {t('form.submit')}
                             </button>
 
                             <p className="text-center text-sm text-gray-500">
-                                Je vous réponds dans les 24 heures
+                                {t('form.response_time')}
                             </p>
                         </form>
                     </div>

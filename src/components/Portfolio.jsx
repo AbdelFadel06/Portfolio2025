@@ -1,90 +1,35 @@
 import React, { useState } from 'react'
+import { useTranslation, Trans } from 'react-i18next'
 
 const Portfolio = () => {
     const [activeFilter, setActiveFilter] = useState('all')
+    const { t } = useTranslation('projects')
 
-    const projects = [
-        {
-            id: 1,
-            title: "Plateforme E-commerce",
-            description: "Site e-commerce complet avec paiement en ligne et dashboard admin",
-            category: "web",
-            image: "/projet-ecommerce.jpg",
-            technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-            link: "#"
-        },
-        {
-            id: 2,
-            title: "Application Mobile",
-            description: "App de gestion de tâches avec synchronisation cloud",
-            category: "mobile",
-            image: "/projet-mobile.jpg",
-            technologies: ["React Native", "Firebase", "Redux"],
-            link: "#"
-        },
-        {
-            id: 3,
-            title: "Site Vitrine Corporate",
-            description: "Site institutionnel moderne avec gestion de contenu",
-            category: "web",
-            image: "/projet-corporate.jpg",
-            technologies: ["Next.js", "Tailwind", "Sanity CMS"],
-            link: "#"
-        },
-        {
-            id: 4,
-            title: "API RESTful",
-            description: "API scalable avec authentification JWT et documentation",
-            category: "backend",
-            image: "/projet-api.jpg",
-            technologies: ["Express", "JWT", "Swagger", "PostgreSQL"],
-            link: "#"
-        },
-        {
-            id: 5,
-            title: "Dashboard Analytics",
-            description: "Tableau de bord avec visualisation de données en temps réel",
-            category: "web",
-            image: "/projet-dashboard.jpg",
-            technologies: ["Vue.js", "D3.js", "Socket.io"],
-            link: "#"
-        },
-        {
-            id: 6,
-            title: "Application SaaS",
-            description: "Solution SaaS complète avec abonnements et multi-tenants",
-            category: "web",
-            image: "/projet-saas.jpg",
-            technologies: ["React", "NestJS", "Redis", "Docker"],
-            link: "#"
-        }
-    ]
-
-    const categories = [
-        { id: 'all', name: 'Tous les projets' },
-        { id: 'web', name: 'Développement Web' },
-        { id: 'mobile', name: 'Applications Mobile' },
-        { id: 'backend', name: 'Backend & API' }
-    ]
+    const projects = t('items', { returnObjects: true })
+    const categories = t('filters', { returnObjects: true })
 
     const filteredProjects = activeFilter === 'all'
         ? projects
         : projects.filter(project => project.category === activeFilter)
 
     return (
-        <section id="portfolio" className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30 py-20 px-4 sm:px-6 lg:px-8">
+        <section id="projects" className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30 py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 {/* En-tête */}
                 <div className="text-center mb-16">
                     <span className="inline-block px-4 py-2 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
-                        Mes Réalisations
+                        {t('badge')}
                     </span>
                     <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                        Mon <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Portfolio</span>
+                        <Trans
+                            i18nKey="projects:title"
+                            components={{
+                                1: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" />
+                            }}
+                        />
                     </h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                        Découvrez une sélection de mes projets récents où j'ai mis en œuvre
-                        mes compétences en développement fullstack pour créer des solutions digitales innovantes.
+                        {t('subtitle')}
                     </p>
                 </div>
 
@@ -120,10 +65,10 @@ const Portfolio = () => {
                                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-500 flex items-center justify-center">
                                     <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 space-y-3">
                                         <a
-                                            href={project.link}
+                                            href="#"
                                             className="bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
                                         >
-                                            Voir le projet
+                                            {project.view_project}
                                         </a>
                                     </div>
                                 </div>
@@ -152,10 +97,10 @@ const Portfolio = () => {
 
                                 {/* Lien démo */}
                                 <a
-                                    href={project.link}
+                                    href="#"
                                     className="inline-flex items-center text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors duration-300 group/link"
                                 >
-                                    Voir les détails
+                                    {project.view_details}
                                     <svg className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
@@ -171,7 +116,7 @@ const Portfolio = () => {
                         href="#contact"
                         className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group"
                     >
-                        Discutons de votre projet
+                        {t('cta_button')}
                         <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>

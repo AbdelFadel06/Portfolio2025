@@ -1,7 +1,9 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
+    const { t } = useTranslation('footer')
 
     return (
         <footer className="bg-white border-t border-gray-100">
@@ -10,7 +12,7 @@ const Footer = () => {
                     {/* Brand et contact */}
                     <div className="text-center lg:text-left space-y-6">
                         <h1 className="text-2xl font-bold text-gray-900">
-                            Abdel <span className="text-gray-600">SALIOU</span>
+                            Abdel <span className="text-gray-600">{t('brand')}</span>
                         </h1>
 
                         <div className="flex items-center space-x-4 justify-center lg:justify-start">
@@ -30,7 +32,7 @@ const Footer = () => {
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-sm text-gray-500">Email professionnel</p>
+                                <p className="text-sm text-gray-500">{t('email_label')}</p>
                                 <p className="text-gray-900 font-medium hover:text-gray-700 transition-colors duration-300">
                                     abdelfadelsaliou@gmail.com
                                 </p>
@@ -41,34 +43,34 @@ const Footer = () => {
                     <div className="flex flex-col sm:flex-row gap-8 text-center sm:text-left">
                         <div className="space-y-4">
                             <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
-                                Navigation
+                                {t('navigation')}
                             </h3>
                             <div className="space-y-2">
                                 <a href="#about" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    À propos
+                                    {t('links.about')}
                                 </a>
                                 <a href="#services" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    Services
+                                    {t('links.services')}
                                 </a>
                                 <a href="#projects" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    Projets
+                                    {t('links.projects')}
                                 </a>
                             </div>
                         </div>
 
                         <div className="space-y-4">
                             <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
-                                Légal
+                                {t('legal')}
                             </h3>
                             <div className="space-y-2">
                                 <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    Mentions légales
+                                    {t('links.legal')}
                                 </a>
                                 <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    Politique de confidentialité
+                                    {t('links.privacy')}
                                 </a>
                                 <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    Conditions d'utilisation
+                                    {t('links.terms')}
                                 </a>
                             </div>
                         </div>
@@ -76,7 +78,7 @@ const Footer = () => {
 
                     <div className="text-center lg:text-left space-y-4">
                         <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
-                            Connectons-nous
+                            {t('connect')}
                         </h3>
                         <div className="flex justify-center lg:justify-start space-x-4">
                             {['LinkedIn', 'GitHub', 'Twitter'].map((social) => (
@@ -99,7 +101,7 @@ const Footer = () => {
 
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p className="text-gray-500 text-sm">
-                        © {currentYear} Abdel Saliou. Tous droits réservés.
+                        {t('rights', { year: currentYear })}
                     </p>
 
                     <div className="flex items-center space-x-6 text-sm">
@@ -107,26 +109,26 @@ const Footer = () => {
                             href="#"
                             className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
                         >
-                            Mentions légales
+                            {t('links.legal')}
                         </a>
                         <a
                             href="#"
                             className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
                         >
-                            Politique de confidentialité
+                            {t('links.privacy')}
                         </a>
                         <a
                             href="#contact"
                             className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
                         >
-                            Me contacter
+                            {t('links.contact')}
                         </a>
                     </div>
                 </div>
 
                 <div className="text-center mt-8 pt-6 border-t border-gray-100">
                     <p className="text-xs text-gray-400 italic">
-                        "Transformons vos idées en expériences digitales exceptionnelles"
+                        {t('quote')}
                     </p>
                 </div>
             </div>
