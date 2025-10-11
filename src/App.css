@@ -17,6 +17,80 @@
   }
 }
 
+
+
+
+
+
+/* styles/theme.css */
+:root {
+  /* Light theme */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-bg-tertiary: #f1f5f9;
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+}
+
+[data-theme="dark"] {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-border: #475569;
+  --color-gray-50: #1e293b;
+  --color-gray-100: #334155;
+}
+
+/* Application des variables */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: all 0.3s ease;
+}
+
+.bg-gray-50 {
+  background-color: var(--color-gray-50);
+}
+
+.bg-gray-100 {
+  background-color: var(--color-gray-100);
+}
+
+.bg-white {
+  background-color: var(--color-bg-primary);
+}
+
+.bg-slate-50 {
+  background-color: var(--color-bg-secondary);
+}
+
+.text-gray-900 {
+  color: var(--color-text-primary);
+}
+
+.text-gray-600 {
+  color: var(--color-text-secondary);
+}
+
+.border-gray-200 {
+  border-color: var(--color-border);
+}
+
+
+
+
+
+
+
+
+
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
