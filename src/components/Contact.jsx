@@ -1,199 +1,187 @@
-import React, { useState } from 'react';
-import { useTranslation, Trans } from 'react-i18next';
+import { useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
+const WHATSAPP = '2290156927899'
+
+const TermBar = ({ filename }) => (
+    <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/5 bg-white/2">
+        <span className="w-2 h-2 rounded-full bg-red-500/60" />
+        <span className="w-2 h-2 rounded-full bg-yellow-400/60" />
+        <span className="w-2 h-2 rounded-full bg-green-500/60" />
+        <span className="ml-auto font-mono text-[10px] text-slate-600">{filename}</span>
+    </div>
+)
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
+    const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+    const [sent, setSent] = useState(false)
+    const { t }   = useTranslation('contact')
+    const header  = useScrollAnimation()
+    const content = useScrollAnimation()
 
-    const { t } = useTranslation('contact');
+    const onChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
+    const onSubmit = e => {
+        e.preventDefault()
+        const text = `*Nom:* ${form.name}\n*Email:* ${form.email}\n*Sujet:* ${form.subject}\n\n*Message:*\n${form.message}`
+        window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer')
+        setSent(true)
+        setTimeout(() => setSent(false), 5000)
+    }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Données du formulaire:', formData);
-    };
+    const socials = [
+        {
+            name: 'LinkedIn', href: '#',
+            icon: <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        },
+        {
+            name: 'GitHub', href: '#',
+            icon: <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        },
+        {
+            name: 'WhatsApp', href: `https://wa.me/${WHATSAPP}`,
+            icon: <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        },
+    ]
+
+    const inputClass = "w-full px-4 py-3 bg-slate-800/60 border border-white/5 text-white placeholder-slate-600 rounded-xl text-sm font-mono focus:outline-none focus:ring-1 focus:ring-indigo-500/50 focus:border-indigo-500/40 transition-all duration-200"
 
     return (
-        <section className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8" id='contact'>
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                        <Trans
-                            i18nKey="contact:title"
-                            components={{
-                                1: <span className="text-gray-600" />
-                            }}
-                        />
-                    </h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                        {t('subtitle')}
+        <section id="contact" className="relative bg-slate-950 py-24 lg:py-32 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/4 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div
+                    ref={header.ref}
+                    className={`mb-14 transition-all duration-700 ${header.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                >
+                    <p className="font-mono text-indigo-500/60 text-xs tracking-widest mb-4 flex items-center gap-2">
+                        <span className="text-slate-600">~/portfolio</span>
+                        <span className="text-slate-700">/</span>
+                        <span>05_contact.tsx</span>
                     </p>
+                    <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+                        <Trans i18nKey="contact:title" components={{ 1: <span className="gradient-text" /> }} />
+                    </h2>
+                    <p className="text-slate-500 max-w-xl leading-relaxed">{t('subtitle')}</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div className="lg:col-span-1 space-y-8 border rounded-2xl p-10 border-gray-300 overflow-x-hidden">
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-6">{t('contact_info')}</h3>
+                <div ref={content.ref} className="grid grid-cols-1 lg:grid-cols-5 gap-5">
 
-                            <div className="space-y-6">
-                                <div className="flex items-start space-x-4">
-                                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-gray-500 mb-1">{t('email')}</p>
-                                        <p className="text-gray-900 font-medium ">{t('email_value')}</p>
-                                    </div>
-                                </div>
+                    {/* Left panel */}
+                    <div className={`lg:col-span-2 space-y-4 transition-all duration-700 ${content.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
 
-                                <div className="flex items-start space-x-4">
-                                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-gray-500 mb-1">{t('location')}</p>
-                                        <p className="text-gray-900 font-medium">{t('location_value')}</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start space-x-4">
-                                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-gray-500 mb-1">{t('availability')}</p>
-                                        <p className="text-gray-900 font-medium">{t('availability_value')}</p>
-                                    </div>
-                                </div>
+                        {/* WhatsApp CTA */}
+                        <a
+                            href={`https://wa.me/${WHATSAPP}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-4 w-full bg-green-500/10 hover:bg-green-500/15 border border-green-500/20 hover:border-green-500/40 px-5 py-4 rounded-2xl transition-all duration-300 hover:-translate-y-0.5"
+                        >
+                            <div className="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <svg viewBox="0 0 24 24" className="w-5 h-5 text-green-400" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
                             </div>
-                        </div>
+                            <div>
+                                <p className="text-slate-500 text-[10px] font-mono mb-0.5">{t('whatsapp')} · Contact principal</p>
+                                <p className="font-mono font-bold text-green-400 text-sm">{t('whatsapp_value')}</p>
+                            </div>
+                            <span className="ml-auto text-green-500/40 group-hover:text-green-400/70 transition-colors text-sm">→</span>
+                        </a>
 
-                        {/* Réseaux sociaux */}
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-6">{t('networks')}</h3>
-                            <div className="flex space-x-4">
-                                {['LinkedIn', 'GitHub', 'Twitter'].map((social) => (
-                                    <a
-                                        key={social}
-                                        href="#"
-                                        className="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors duration-300 group"
-                                    >
-                                        <span className="text-gray-600 group-hover:text-gray-900 font-medium text-sm">
-                                            {social.charAt(0)}
-                                        </span>
-                                    </a>
+                        {/* Info card */}
+                        <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden">
+                            <TermBar filename="contact_info.json" />
+                            <div className="p-5 space-y-4">
+                                {[
+                                    { label: t('email'),        value: t('email_value'),        href: `mailto:${t('email_value')}`, color: 'text-indigo-400' },
+                                    { label: t('location'),     value: t('location_value'),     href: null,                         color: 'text-violet-400' },
+                                    { label: t('availability'), value: t('availability_value'), href: null,                         color: 'text-emerald-400' },
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-3 items-start">
+                                        <span className={`font-mono text-[10px] ${item.color} mt-0.5 flex-shrink-0 opacity-50`}>{String(i + 1).padStart(2, '0')}</span>
+                                        <div>
+                                            <p className="font-mono text-[10px] text-slate-600 mb-0.5">{item.label}</p>
+                                            {item.href
+                                                ? <a href={item.href} className={`font-mono text-sm ${item.color} hover:opacity-80 transition-opacity break-all`}>{item.value}</a>
+                                                : <p className={`font-mono text-sm ${item.color}`}>{item.value}</p>
+                                            }
+                                        </div>
+                                    </div>
                                 ))}
                             </div>
                         </div>
+
+                        {/* Socials */}
+                        <div className="flex gap-2">
+                            {socials.map(s => (
+                                <a
+                                    key={s.name}
+                                    href={s.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title={s.name}
+                                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-slate-900 border border-white/5 hover:border-white/15 rounded-xl text-slate-500 hover:text-white font-mono text-xs font-bold transition-all hover:-translate-y-0.5"
+                                >
+                                    {s.icon}
+                                    <span className="hidden sm:inline text-[10px]">{s.name}</span>
+                                </a>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Formulaire de contact */}
-                    <div className="lg:col-span-2">
-                        <form onSubmit={handleSubmit} className="space-y-6 border rounded-2xl p-10 border-gray-300">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {/* Nom */}
-                                <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t('form.name')}
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500"
-                                        placeholder={t('form.name_placeholder')}
-                                    />
+                    {/* Right: Form */}
+                    <div className={`lg:col-span-3 transition-all duration-700 delay-200 ${content.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+                        <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden">
+                            <TermBar filename="new_message.ts" />
+                            <form onSubmit={onSubmit} className="p-6 space-y-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div className="space-y-1.5">
+                                        <label className="font-mono text-[10px] text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                                            <span className="text-indigo-500/50">const</span> {t('form.name')}
+                                        </label>
+                                        <input type="text" name="name" value={form.name} onChange={onChange} required placeholder={t('form.name_placeholder')} className={inputClass} />
+                                    </div>
+                                    <div className="space-y-1.5">
+                                        <label className="font-mono text-[10px] text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                                            <span className="text-indigo-500/50">const</span> {t('form.email')}
+                                        </label>
+                                        <input type="email" name="email" value={form.email} onChange={onChange} required placeholder={t('form.email_placeholder')} className={inputClass} />
+                                    </div>
                                 </div>
-
-                                {/* Email */}
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                                        {t('form.email')}
+                                <div className="space-y-1.5">
+                                    <label className="font-mono text-[10px] text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                                        <span className="text-indigo-500/50">const</span> {t('form.subject')}
                                     </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500"
-                                        placeholder={t('form.email_placeholder')}
-                                    />
+                                    <input type="text" name="subject" value={form.subject} onChange={onChange} required placeholder={t('form.subject_placeholder')} className={inputClass} />
                                 </div>
-                            </div>
-
-                            {/* Sujet */}
-                            <div>
-                                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t('form.subject')}
-                                </label>
-                                <input
-                                    type="text"
-                                    id="subject"
-                                    name="subject"
-                                    value={formData.subject}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500"
-                                    placeholder={t('form.subject_placeholder')}
-                                />
-                            </div>
-
-                            {/* Message */}
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                                    {t('form.message')}
-                                </label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows={6}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all duration-300 bg-white text-gray-900 placeholder-gray-500 resize-none"
-                                    placeholder={t('form.message_placeholder')}
-                                />
-                            </div>
-
-                            {/* Bouton d'envoi */}
-                            <button
-                                type="submit"
-                                className="w-full bg-gray-900 text-white py-4 px-6 rounded-lg font-semibold hover:bg-gray-800 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
-                            >
-                                {t('form.submit')}
-                            </button>
-
-                            <p className="text-center text-sm text-gray-500">
-                                {t('form.response_time')}
-                            </p>
-                        </form>
+                                <div className="space-y-1.5">
+                                    <label className="font-mono text-[10px] text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                                        <span className="text-indigo-500/50">const</span> {t('form.message')}
+                                    </label>
+                                    <textarea name="message" value={form.message} onChange={onChange} required rows={6} placeholder={t('form.message_placeholder')} className={`${inputClass} resize-none`} />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="w-full flex items-center justify-center gap-3 bg-green-500/15 hover:bg-green-500/25 border border-green-500/30 hover:border-green-500/50 text-green-400 py-3.5 px-6 rounded-xl font-mono font-bold text-sm transition-all hover:-translate-y-0.5"
+                                >
+                                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                    </svg>
+                                    {sent ? '✓ WhatsApp ouvert !' : t('form.submit')}
+                                </button>
+                                <p className="text-center font-mono text-[10px] text-slate-700">{t('form.response_time')}</p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default Contact;
+export default Contact

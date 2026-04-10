@@ -1,165 +1,150 @@
 @import "tailwindcss";
 
-/* Animation smooth pour le dropdown */
+/* ─── KEYFRAMES ──────────────────────────────────────────────── */
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -60px) scale(1.12); }
+  66%       { transform: translate(-30px, 25px) scale(0.88); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── UTILITY CLASSES ────────────────────────────────────────── */
+.animate-blob          { animation: blob 8s ease-in-out infinite; }
+.animation-delay-2000  { animation-delay: 2s; }
+.animation-delay-4000  { animation-delay: 4s; }
+.animate-float         { animation: float 4s ease-in-out infinite; }
+.animate-spin-slow     { animation: spin-slow 20s linear infinite; }
+.animate-fadeIn        { animation: fadeIn 0.5s ease-out forwards; }
+
+/* ─── GRADIENT TEXT ──────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── HERO DOT PATTERN ───────────────────────────────────────── */
+.hero-dots {
+  background-image: radial-gradient(rgba(99, 102, 241, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.hero-dots-light {
+  background-image: radial-gradient(rgba(99, 102, 241, 0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ─── GLASS MORPHISM ─────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── GLOW EFFECTS ───────────────────────────────────────────── */
+.glow-indigo {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.35), 0 0 80px rgba(99, 102, 241, 0.12);
+}
+.glow-indigo-sm {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+.glow-green {
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.35);
+}
+
+/* Card hover glow */
+.card-glow {
+  transition: all 0.35s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25),
+              0 20px 60px rgba(0, 0, 0, 0.25),
+              0 0 40px rgba(99, 102, 241, 0.08);
+}
+.card-glow-light:hover {
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2),
+              0 20px 50px rgba(99, 102, 241, 0.08),
+              0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ─── LANGUAGE DROPDOWN ──────────────────────────────────────── */
 .language-dropdown {
   transform-origin: top right;
-  animation: scaleIn 0.2s ease-out;
+  animation: slideDown 0.18s ease-out;
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+/* ─── SKILL BAR ──────────────────────────────────────────────── */
+.skill-bar-fill {
+  transition: width 1.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ─── SCROLLBAR ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.35); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.55); }
 
-
-
-
-
-/* styles/theme.css */
-:root {
-  /* Light theme */
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8fafc;
-  --color-bg-tertiary: #f1f5f9;
-  --color-text-primary: #1e293b;
-  --color-text-secondary: #64748b;
-  --color-border: #e2e8f0;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-}
-
-[data-theme="dark"] {
-  --color-bg-primary: #0f172a;
-  --color-bg-secondary: #1e293b;
-  --color-bg-tertiary: #334155;
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #cbd5e1;
-  --color-border: #475569;
-  --color-gray-50: #1e293b;
-  --color-gray-100: #334155;
-}
-
-/* Application des variables */
+/* ─── BODY ───────────────────────────────────────────────────── */
 body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  transition: all 0.3s ease;
-}
-
-.bg-gray-50 {
-  background-color: var(--color-gray-50);
-}
-
-.bg-gray-100 {
-  background-color: var(--color-gray-100);
-}
-
-.bg-white {
-  background-color: var(--color-bg-primary);
-}
-
-.bg-slate-50 {
-  background-color: var(--color-bg-secondary);
-}
-
-.text-gray-900 {
-  color: var(--color-text-primary);
-}
-
-.text-gray-600 {
-  color: var(--color-text-secondary);
-}
-
-.border-gray-200 {
-  border-color: var(--color-border);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* ─── GRADIENT BORDER CARD ───────────────────────────────────── */
+.gradient-border {
+  position: relative;
+  background-clip: padding-box;
 }
-a:hover {
-  color: #535bf2;
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(99,102,241,0.4), rgba(139,92,246,0.1), transparent);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
-
+.gradient-border:hover::before { opacity: 1; }

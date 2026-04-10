@@ -1,125 +1,122 @@
-import React, { useState } from 'react'
-import { useTranslation, Trans } from 'react-i18next'
+import { useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
+const CARD_ACCENTS = [
+    { border: 'hover:border-blue-500/30',     label: 'text-blue-400',     num: 'text-blue-500/15' },
+    { border: 'hover:border-emerald-500/30',  label: 'text-emerald-400',  num: 'text-emerald-500/15' },
+    { border: 'hover:border-violet-500/30',   label: 'text-violet-400',   num: 'text-violet-500/15' },
+    { border: 'hover:border-orange-500/30',   label: 'text-orange-400',   num: 'text-orange-500/15' },
+    { border: 'hover:border-cyan-500/30',     label: 'text-cyan-400',     num: 'text-cyan-500/15' },
+]
 
 const Portfolio = () => {
     const [activeFilter, setActiveFilter] = useState('all')
-    const { t } = useTranslation('projects')
+    const { t }  = useTranslation('projects')
+    const header = useScrollAnimation()
+    const grid   = useScrollAnimation()
 
-    const projects = t('items', { returnObjects: true })
+    const projects   = t('items',   { returnObjects: true })
     const categories = t('filters', { returnObjects: true })
 
-    const filteredProjects = activeFilter === 'all'
+    const filtered = activeFilter === 'all'
         ? projects
-        : projects.filter(project => project.category === activeFilter)
+        : projects.filter(p => p.category === activeFilter)
 
     return (
-        <section id="projects" className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30 py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-                {/* En-tête */}
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-2 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
-                        {t('badge')}
-                    </span>
-                    <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                        <Trans
-                            i18nKey="projects:title"
-                            components={{
-                                1: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" />
-                            }}
-                        />
-                    </h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                        {t('subtitle')}
+        <section id="projects" className="relative bg-slate-950 py-24 lg:py-32 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/4 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div
+                    ref={header.ref}
+                    className={`mb-14 transition-all duration-700 ${header.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                >
+                    <p className="font-mono text-indigo-500/60 text-xs tracking-widest mb-4 flex items-center gap-2">
+                        <span className="text-slate-600">~/portfolio</span>
+                        <span className="text-slate-700">/</span>
+                        <span>04_projects.tsx</span>
                     </p>
+                    <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+                        <Trans i18nKey="projects:title" components={{ 1: <span className="gradient-text" /> }} />
+                    </h2>
+                    <p className="text-slate-500 max-w-xl leading-relaxed">{t('subtitle')}</p>
                 </div>
 
-                {/* Filtres */}
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    {categories.map(category => (
+                {/* Filters */}
+                <div className="flex flex-wrap gap-2 mb-10">
+                    {categories.map(cat => (
                         <button
-                            key={category.id}
-                            onClick={() => setActiveFilter(category.id)}
-                            className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                                activeFilter === category.id
-                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
-                                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-sm'
+                            key={cat.id}
+                            onClick={() => setActiveFilter(cat.id)}
+                            className={`px-4 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all duration-200 border ${
+                                activeFilter === cat.id
+                                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-500/20'
+                                    : 'bg-white/3 text-slate-400 border-white/8 hover:border-white/15 hover:text-white'
                             }`}
                         >
-                            {category.name}
+                            {activeFilter === cat.id && <span className="mr-1.5 opacity-60">▶</span>}
+                            {cat.name}
                         </button>
                     ))}
                 </div>
 
-                {/* Grille des projets */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    {filteredProjects.map(project => (
-                        <div
-                            key={project.id}
-                            className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2"
-                        >
-                            {/* Image du projet */}
-                            <div className="relative overflow-hidden">
-                                <div className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                                    <span className="text-white text-lg font-semibold">{project.title}</span>
+                {/* Grid */}
+                <div ref={grid.ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                    {filtered.map((project, i) => {
+                        const accent = CARD_ACCENTS[i % CARD_ACCENTS.length]
+                        return (
+                            <div
+                                key={project.id}
+                                className={`group bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:-translate-y-1.5 transition-all duration-300 ${accent.border} ${grid.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                                style={{ transitionDelay: `${i * 80}ms` }}
+                            >
+                                <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/5 bg-white/2">
+                                    <span className="w-2 h-2 rounded-full bg-red-500/60" />
+                                    <span className="w-2 h-2 rounded-full bg-yellow-400/60" />
+                                    <span className="w-2 h-2 rounded-full bg-green-500/60" />
+                                    <span className={`ml-auto font-mono text-[10px] ${accent.label} opacity-60`}>
+                                        {project.title.toLowerCase().replace(/\s+/g, '_')}.ts
+                                    </span>
                                 </div>
-                                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-500 flex items-center justify-center">
-                                    <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 space-y-3">
-                                        <a
-                                            href="#"
-                                            className="bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
-                                        >
-                                            {project.view_project}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Contenu du projet */}
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                                    {project.title}
-                                </h3>
-                                <p className="text-gray-600 mb-4 leading-relaxed">
-                                    {project.description}
-                                </p>
-
-                                {/* Technologies utilisées */}
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.technologies.map((tech, index) => (
-                                        <span
-                                            key={index}
-                                            className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full"
-                                        >
-                                            {tech}
+                                <div className="p-5">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <span className={`text-xs font-mono font-semibold ${accent.label} bg-white/5 border border-white/8 px-2.5 py-1 rounded-md`}>
+                                            {project.category}
                                         </span>
-                                    ))}
+                                        <span className={`font-mono text-5xl font-extrabold ${accent.num} leading-none select-none`}>
+                                            {String(i + 1).padStart(2, '0')}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-base font-bold text-white mb-2">{project.title}</h3>
+                                    <p className="text-sm text-slate-500 leading-relaxed mb-4">{project.description}</p>
+                                    <div className="flex flex-wrap gap-1.5 mb-5">
+                                        {project.technologies.map((tech, j) => (
+                                            <span key={j} className="px-2 py-0.5 bg-slate-800 text-slate-400 text-[10px] font-mono rounded border border-white/5">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <a href="#contact" className={`inline-flex items-center ${accent.label} text-xs font-mono font-semibold gap-1.5 hover:gap-2.5 transition-all opacity-70 hover:opacity-100`}>
+                                        <span>▶</span>
+                                        {project.view_details}
+                                    </a>
                                 </div>
-
-                                {/* Lien démo */}
-                                <a
-                                    href="#"
-                                    className="inline-flex items-center text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors duration-300 group/link"
-                                >
-                                    {project.view_details}
-                                    <svg className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
                             </div>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
 
-                {/* Bouton Voir Plus */}
-                <div className="text-center">
+                <div className="flex justify-center">
                     <a
                         href="#contact"
-                        className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group"
+                        className="inline-flex items-center gap-2 font-mono text-sm font-bold text-white border border-white/10 hover:border-indigo-500/50 bg-white/3 hover:bg-indigo-600/10 px-6 py-3 rounded-xl transition-all duration-250 hover:-translate-y-px"
                     >
+                        <span className="text-indigo-500 opacity-70">$</span>
                         {t('cta_button')}
-                        <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                        <span className="text-slate-500">→</span>
                     </a>
                 </div>
             </div>

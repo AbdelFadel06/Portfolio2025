@@ -1,13 +1,11 @@
 import './App.css'
-import { BrowserRouter, Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import './i18n'
-import { useTheme } from './contexts/ThemeContext'
 
 function App() {
-    // const { isDark } = useTheme();
     return (
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+        <div className="min-h-screen bg-slate-950">
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />

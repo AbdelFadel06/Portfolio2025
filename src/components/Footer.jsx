@@ -1,135 +1,89 @@
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+const WHATSAPP = '2290156927899'
+
 const Footer = () => {
-    const currentYear = new Date().getFullYear()
+    const year = new Date().getFullYear()
     const { t } = useTranslation('footer')
 
     return (
-        <footer className="bg-white border-t border-gray-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-8 lg:space-y-0">
-                    {/* Brand et contact */}
-                    <div className="text-center lg:text-left space-y-6">
-                        <h1 className="text-2xl font-bold text-gray-900">
-                            Abdel <span className="text-gray-600">{t('brand')}</span>
-                        </h1>
+        <footer className="relative bg-slate-950 border-t border-white/5 overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
 
-                        <div className="flex items-center space-x-4 justify-center lg:justify-start">
-                            <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center flex-shrink-0 border border-gray-200 group hover:bg-gray-100 transition-colors duration-300">
-                                <svg
-                                    className="w-6 h-6 text-gray-500 group-hover:text-gray-700 transition-colors duration-300"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                    />
-                                </svg>
-                            </div>
-                            <div>
-                                <p className="text-sm text-gray-500">{t('email_label')}</p>
-                                <p className="text-gray-900 font-medium hover:text-gray-700 transition-colors duration-300">
-                                    abdelfadelsaliou@gmail.com
-                                </p>
-                            </div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+                    {/* Brand */}
+                    <div className="space-y-5">
+                        <a href="#home" className="inline-flex items-baseline gap-1">
+                            <span className="text-2xl font-black text-white tracking-tight">A.</span>
+                            <span className="text-2xl font-black text-indigo-500 tracking-tight">SALIOU</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mb-0.5 ml-0.5" />
+                        </a>
+                        <p className="font-mono text-xs text-slate-600 leading-relaxed max-w-xs">
+                            <span className="text-slate-700">// </span>
+                            Développeur Full Stack · Cotonou, Bénin
+                        </p>
+                        <div className="space-y-2.5">
+                            <a
+                                href={`https://wa.me/${WHATSAPP}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2.5 text-slate-600 hover:text-green-400 transition-colors text-xs font-mono group"
+                            >
+                                <span className="text-green-500/60 group-hover:text-green-400">▶</span>
+                                +229 01 56 92 78 99
+                            </a>
+                            <a
+                                href="mailto:abdelfadelsaliou@gmail.com"
+                                className="flex items-center gap-2.5 text-slate-600 hover:text-indigo-400 transition-colors text-xs font-mono group"
+                            >
+                                <span className="text-indigo-500/60 group-hover:text-indigo-400">▶</span>
+                                abdelfadelsaliou@gmail.com
+                            </a>
                         </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-8 text-center sm:text-left">
-                        <div className="space-y-4">
-                            <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
-                                {t('navigation')}
-                            </h3>
-                            <div className="space-y-2">
-                                <a href="#about" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    {t('links.about')}
-                                </a>
-                                <a href="#services" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    {t('links.services')}
-                                </a>
-                                <a href="#projects" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    {t('links.projects')}
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="space-y-4">
-                            <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
-                                {t('legal')}
-                            </h3>
-                            <div className="space-y-2">
-                                <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    {t('links.legal')}
-                                </a>
-                                <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    {t('links.privacy')}
-                                </a>
-                                <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm">
-                                    {t('links.terms')}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="text-center lg:text-left space-y-4">
-                        <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
-                            {t('connect')}
-                        </h3>
-                        <div className="flex justify-center lg:justify-start space-x-4">
-                            {['LinkedIn', 'GitHub', 'Twitter'].map((social) => (
+                    {/* Navigation */}
+                    <div className="space-y-5">
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-slate-700">{t('navigation')}</p>
+                        <div className="space-y-2.5">
+                            {[
+                                { label: t('links.about'),    href: '#about' },
+                                { label: t('links.services'), href: '#services' },
+                                { label: t('links.projects'), href: '#projects' },
+                                { label: t('links.contact'),  href: '#contact' },
+                            ].map((link, i) => (
                                 <a
-                                    key={social}
-                                    href="#"
-                                    className="w-10 h-10 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-100 hover:border-gray-300 transition-all duration-300 group"
-                                    title={social}
+                                    key={i}
+                                    href={link.href}
+                                    className="flex items-center gap-2 text-slate-600 hover:text-white transition-colors text-xs font-mono group"
                                 >
-                                    <span className="text-gray-500 group-hover:text-gray-700 font-medium text-sm">
-                                        {social.charAt(0)}
-                                    </span>
+                                    <span className="text-slate-800 group-hover:text-indigo-500 transition-colors">→</span>
+                                    {link.label}
                                 </a>
                             ))}
                         </div>
                     </div>
-                </div>
 
-                <div className="w-full border-t border-gray-200 my-8"></div>
-
-                <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <p className="text-gray-500 text-sm">
-                        {t('rights', { year: currentYear })}
-                    </p>
-
-                    <div className="flex items-center space-x-6 text-sm">
-                        <a
-                            href="#"
-                            className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
-                        >
-                            {t('links.legal')}
-                        </a>
-                        <a
-                            href="#"
-                            className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
-                        >
-                            {t('links.privacy')}
-                        </a>
-                        <a
-                            href="#contact"
-                            className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
-                        >
-                            {t('links.contact')}
-                        </a>
+                    {/* Stack */}
+                    <div className="space-y-5">
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-slate-700">Stack</p>
+                        <div className="bg-slate-900 border border-white/5 rounded-xl p-4 font-mono text-xs">
+                            <p className="text-slate-700 mb-1">const <span className="text-cyan-400">stack</span> <span className="text-slate-600">=</span> [</p>
+                            {['React', 'TypeScript', 'Python', 'Django', 'Tailwind', 'Git'].map((tech, i, arr) => (
+                                <p key={tech} className="ml-4 text-amber-300/80">
+                                    "{tech}"{i < arr.length - 1 ? <span className="text-slate-700">,</span> : ''}
+                                </p>
+                            ))}
+                            <p className="text-slate-700">]</p>
+                        </div>
                     </div>
                 </div>
 
-                <div className="text-center mt-8 pt-6 border-t border-gray-100">
-                    <p className="text-xs text-gray-400 italic">
-                        {t('quote')}
-                    </p>
+                <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3">
+                    <p className="font-mono text-[10px] text-slate-700">© {year} — Abdel Fadel Saliou</p>
+                    <p className="font-mono text-[10px] text-slate-800">Built with React + Tailwind CSS</p>
                 </div>
             </div>
         </footer>
