@@ -5,11 +5,11 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 const WHATSAPP = '2290156927899'
 
 const TermBar = ({ filename }) => (
-    <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/5 bg-white/2">
-        <span className="w-2 h-2 rounded-full bg-red-500/60" />
-        <span className="w-2 h-2 rounded-full bg-yellow-400/60" />
-        <span className="w-2 h-2 rounded-full bg-green-500/60" />
-        <span className="ml-auto font-mono text-[10px] text-slate-600">{filename}</span>
+    <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-slate-200 dark:border-white/5 bg-slate-100/80 dark:bg-white/2">
+        <span className="w-2 h-2 rounded-full bg-red-400" />
+        <span className="w-2 h-2 rounded-full bg-yellow-400" />
+        <span className="w-2 h-2 rounded-full bg-green-400" />
+        <span className="ml-auto font-mono text-[10px] text-slate-400 dark:text-slate-600">{filename}</span>
     </div>
 )
 
@@ -45,11 +45,11 @@ const Contact = () => {
         },
     ]
 
-    const inputClass = "w-full px-4 py-3 bg-slate-800/60 border border-white/5 text-white placeholder-slate-600 rounded-xl text-sm font-mono focus:outline-none focus:ring-1 focus:ring-indigo-500/50 focus:border-indigo-500/40 transition-all duration-200"
+    const inputClass = "w-full px-4 py-3 bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-white/5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 rounded-xl text-sm font-mono focus:outline-none focus:ring-1 focus:ring-indigo-500/50 focus:border-indigo-500/40 transition-all duration-200"
 
     return (
-        <section id="contact" className="relative bg-slate-950 py-24 lg:py-32 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <section id="contact" className="relative bg-slate-50 dark:bg-slate-950 py-24 lg:py-32 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/15 dark:via-white/5 to-transparent" />
             <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/4 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,12 +58,12 @@ const Contact = () => {
                     ref={header.ref}
                     className={`mb-14 transition-all duration-700 ${header.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 >
-                    <p className="font-mono text-indigo-500/60 text-xs tracking-widest mb-4 flex items-center gap-2">
-                        <span className="text-slate-600">~/portfolio</span>
-                        <span className="text-slate-700">/</span>
+                    <p className="font-mono text-indigo-500/70 text-xs tracking-widest mb-4 flex items-center gap-2">
+                        <span className="text-slate-400 dark:text-slate-600">~/portfolio</span>
+                        <span className="text-slate-300 dark:text-slate-700">/</span>
                         <span>05_contact.tsx</span>
                     </p>
-                    <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+                    <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
                         <Trans i18nKey="contact:title" components={{ 1: <span className="gradient-text" /> }} />
                     </h2>
                     <p className="text-slate-500 max-w-xl leading-relaxed">{t('subtitle')}</p>
@@ -94,7 +94,7 @@ const Contact = () => {
                         </a>
 
                         {/* Info card */}
-                        <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden">
+                        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 rounded-2xl overflow-hidden">
                             <TermBar filename="contact_info.json" />
                             <div className="p-5 space-y-4">
                                 {[
@@ -105,7 +105,7 @@ const Contact = () => {
                                     <div key={i} className="flex gap-3 items-start">
                                         <span className={`font-mono text-[10px] ${item.color} mt-0.5 flex-shrink-0 opacity-50`}>{String(i + 1).padStart(2, '0')}</span>
                                         <div>
-                                            <p className="font-mono text-[10px] text-slate-600 mb-0.5">{item.label}</p>
+                                            <p className="font-mono text-[10px] text-slate-400 dark:text-slate-600 mb-0.5">{item.label}</p>
                                             {item.href
                                                 ? <a href={item.href} className={`font-mono text-sm ${item.color} hover:opacity-80 transition-opacity break-all`}>{item.value}</a>
                                                 : <p className={`font-mono text-sm ${item.color}`}>{item.value}</p>
@@ -125,7 +125,7 @@ const Contact = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title={s.name}
-                                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-slate-900 border border-white/5 hover:border-white/15 rounded-xl text-slate-500 hover:text-white font-mono text-xs font-bold transition-all hover:-translate-y-0.5"
+                                    className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/15 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white font-mono text-xs font-bold transition-all hover:-translate-y-0.5"
                                 >
                                     {s.icon}
                                     <span className="hidden sm:inline text-[10px]">{s.name}</span>
@@ -136,18 +136,18 @@ const Contact = () => {
 
                     {/* Right: Form */}
                     <div className={`lg:col-span-3 transition-all duration-700 delay-200 ${content.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-                        <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden">
+                        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 rounded-2xl overflow-hidden">
                             <TermBar filename="new_message.ts" />
                             <form onSubmit={onSubmit} className="p-6 space-y-4">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div className="space-y-1.5">
-                                        <label className="font-mono text-[10px] text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                                        <label className="font-mono text-[10px] text-slate-500 dark:text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
                                             <span className="text-indigo-500/50">const</span> {t('form.name')}
                                         </label>
                                         <input type="text" name="name" value={form.name} onChange={onChange} required placeholder={t('form.name_placeholder')} className={inputClass} />
                                     </div>
                                     <div className="space-y-1.5">
-                                        <label className="font-mono text-[10px] text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                                        <label className="font-mono text-[10px] text-slate-500 dark:text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
                                             <span className="text-indigo-500/50">const</span> {t('form.email')}
                                         </label>
                                         <input type="email" name="email" value={form.email} onChange={onChange} required placeholder={t('form.email_placeholder')} className={inputClass} />
@@ -174,7 +174,7 @@ const Contact = () => {
                                     </svg>
                                     {sent ? '✓ WhatsApp ouvert !' : t('form.submit')}
                                 </button>
-                                <p className="text-center font-mono text-[10px] text-slate-700">{t('form.response_time')}</p>
+                                <p className="text-center font-mono text-[10px] text-slate-400 dark:text-slate-700">{t('form.response_time')}</p>
                             </form>
                         </div>
                     </div>

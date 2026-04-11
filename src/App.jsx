@@ -5,7 +5,7 @@ import './i18n'
 
 function App() {
     return (
-        <div className="min-h-screen bg-slate-950">
+        <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
