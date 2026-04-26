@@ -1,16 +1,11 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
 import './i18n'
+import Home from './pages/Home'
 
 function App() {
     return (
         <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                </Routes>
-            </BrowserRouter>
+            <Home />
         </div>
     )
 }

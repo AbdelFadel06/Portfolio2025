@@ -1,4 +1,4 @@
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const ToolIcon = ({ name }) => {
@@ -125,7 +125,11 @@ const About = () => {
                                     {journeyParagraphs.map((p, i) => (
                                         <div key={i} className="flex gap-3">
                                             <span className="font-mono text-slate-300 dark:text-slate-700 text-xs select-none mt-0.5 flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                                            <p dangerouslySetInnerHTML={{ __html: p }} />
+                                            <p>{p.split(/<strong>|<\/strong>/).map((part, j) =>
+                                                j % 2 === 1
+                                                    ? <strong key={j} className="text-slate-800 dark:text-slate-200 font-semibold">{part}</strong>
+                                                    : part
+                                            )}</p>
                                         </div>
                                     ))}
                                 </div>

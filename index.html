@@ -1,13 +1,161 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Abdel SALIOU</title>
+    <style>
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #0f172a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      #loader.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .loader-terminal {
+        background: #0f1629;
+        border: 1px solid rgba(99,102,241,0.25);
+        border-radius: 16px;
+        overflow: hidden;
+        width: 280px;
+        box-shadow: 0 0 60px rgba(99,102,241,0.12);
+      }
+      .loader-bar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 14px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        background: rgba(255,255,255,0.02);
+      }
+      .loader-bar span {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+      }
+      .loader-bar .r { background: #f87171; }
+      .loader-bar .y { background: #fbbf24; }
+      .loader-bar .g { background: #4ade80; }
+      .loader-bar .file {
+        width: auto; height: auto;
+        border-radius: 0;
+        margin-left: auto;
+        font-family: ui-monospace, monospace;
+        font-size: 10px;
+        color: rgba(99,102,241,0.7);
+        background: none;
+      }
+      .loader-body {
+        padding: 20px 18px;
+        font-family: ui-monospace, monospace;
+        font-size: 12px;
+        line-height: 1.9;
+      }
+      .loader-line { display: flex; gap: 8px; }
+      .lc-slate  { color: rgba(100,116,139,0.6); }
+      .lc-indigo { color: #818cf8; }
+      .lc-cyan   { color: #22d3ee; }
+      .lc-violet { color: #a78bfa; }
+      .lc-green  { color: #4ade80; }
+      .lc-white  { color: rgba(255,255,255,0.85); }
+      .loader-cursor {
+        display: inline-block;
+        width: 7px; height: 14px;
+        background: #6366f1;
+        vertical-align: middle;
+        margin-left: 2px;
+        animation: blink 1s step-end infinite;
+      }
+      .loader-dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: #4ade80;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      .loader-name {
+        font-family: ui-monospace, monospace;
+        font-size: 11px;
+        color: rgba(100,116,139,0.5);
+        letter-spacing: 0.15em;
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50%       { opacity: 0.5; transform: scale(0.75); }
+      }
+    </style>
   </head>
   <body>
+
+    <div id="loader">
+      <div class="loader-terminal">
+        <div class="loader-bar">
+          <span class="r"></span>
+          <span class="y"></span>
+          <span class="g"></span>
+          <span class="file">portfolio.tsx</span>
+        </div>
+        <div class="loader-body">
+          <div class="loader-line">
+            <span class="lc-slate">1</span>
+            <span class="lc-indigo">import</span>
+            <span class="lc-white">{ dev }</span>
+            <span class="lc-indigo">from</span>
+            <span class="lc-cyan">"./abdel"</span>
+          </div>
+          <div class="loader-line">
+            <span class="lc-slate">2</span>
+            <span>&nbsp;</span>
+          </div>
+          <div class="loader-line">
+            <span class="lc-slate">3</span>
+            <span class="lc-indigo">const</span>
+            <span class="lc-cyan">stack</span>
+            <span class="lc-white">=</span>
+            <span class="lc-green">["React"</span>
+            <span class="lc-white">,</span>
+            <span class="lc-green">"Django"]</span>
+          </div>
+          <div class="loader-line">
+            <span class="lc-slate">4</span>
+            <span class="lc-indigo">const</span>
+            <span class="lc-cyan">ready</span>
+            <span class="lc-white">=</span>
+            <span class="lc-violet">true</span>
+            <span class="loader-cursor"></span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="loader-dot"></div>
+        <span class="loader-name">ABDEL SALIOU · FULL STACK DEV</span>
+      </div>
+    </div>
+
     <div id="root"></div>
+
+    <script>
+      // Hide loader once React has mounted
+      window.__hideLoader = function() {
+        var el = document.getElementById('loader');
+        if (el) {
+          el.classList.add('hide');
+          setTimeout(function() { el.remove(); }, 500);
+        }
+      };
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

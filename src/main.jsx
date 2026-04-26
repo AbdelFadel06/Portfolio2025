@@ -4,10 +4,19 @@ import './index.css'
 import App from './App.jsx'
 import { ThemeProvider } from './contexts/ThemeContext'
 
-createRoot(document.getElementById('root')).render(
+const root = createRoot(document.getElementById('root'))
+
+root.render(
     <StrictMode>
         <ThemeProvider>
             <App />
         </ThemeProvider>
     </StrictMode>
 )
+
+// Hide the inline CSS loader once React has painted
+requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+        if (typeof window.__hideLoader === 'function') window.__hideLoader()
+    })
+})
