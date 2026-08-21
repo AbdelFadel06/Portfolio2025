@@ -1,0 +1,204 @@
+{
+  "nav": {
+    "experiences": "Expériences",
+    "accueil": "Accueil",
+    "projets": "Travaux",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "firstname": "Abdel Fadel O.",
+    "lastname": "SALIOU",
+    "title": "Développeur Fullstack transformant des idées ambitieuses en produits soignés et prêts pour la production.",
+    "tags": "Fullstack • Web & Mobile — Développement orienté design, conçu pour la production",
+    "highlights": "Interfaces pixel-perfect · Backends robustes · Design centré UX · Produits web & mobile",
+    "ctaWork": "Voir mes projets",
+    "ctaContact": "Contact",
+    "ctaCv": "Télécharger mon CV",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "selectedWork": {
+    "title": "Travaux Sélectionnés",
+    "subtitle": "Quelques projets sur lesquels j'ai travaillé récemment",
+    "problemLabel": "Problème à résoudre",
+    "impactLabel": "Impact",
+    "items": [
+      {
+        "name": "ShopM",
+        "description": "Système de gestion commerciale multi-boutiques (SaaS) permettant à différents commerçants de gérer une ou plusieurs boutiques indépendantes : employés, inventaire, stock et caisse.",
+        "problem": "Absence d'outil accessible permettant à des commerçants indépendants de digitaliser et centraliser la gestion de leur(s) boutique(s), quel que soit leur nombre ou leur propriétaire.",
+        "impact": "Simplifie la gestion quotidienne des commerçants, réduit les erreurs de stock et améliore le suivi des ventes et des employés, boutique par boutique."
+      },
+      {
+        "name": "Budget_App",
+        "description": "Application mobile de suivi budgétaire personnel pour gérer ses finances et ses dépenses mensuelles.",
+        "problem": "Manque de visibilité sur ses habitudes de dépenses, rendant difficile la gestion d'un budget mensuel.",
+        "impact": "Aide les utilisateurs à mieux maîtriser leurs finances et à réduire les dépenses superflues grâce à un suivi clair et régulier."
+      },
+      {
+        "name": "Empreintes",
+        "description": "Site vitrine et e-commerce pour Empreintes, marque béninoise de maroquinerie (sacs, pochettes, chaussures, sandales) en cuir, fabriqués localement pour homme et femme.",
+        "problem": "Absence d'une plateforme en ligne permettant à la marque de raconter son histoire, sa vision et son identité, tout en offrant aux clients un accès direct au catalogue et à la commande.",
+        "impact": "Renforce la visibilité et la crédibilité de la marque grâce à une expérience fidèle à son identité visuelle, tout en facilitant la découverte des produits et la prise de commande en ligne."
+    },{
+        "name": "Clɔ̌ avɔ̌",
+        "description": "Application web/mobile de mise en relation avec des lavandières pour la lessive à domicile (facturée au kilo) et le nettoyage de maisons ou bureaux, à des prix compétitifs. (Projet en cours de développement)",
+        "problem": "Manque d'une solution simple et fiable pour réserver un service de lessive ou de ménage à domicile, avec une tarification claire et accessible.",
+        "impact": "Facilite l'accès à des services de lessive et de nettoyage à la demande, tout en offrant une source de revenus flexible aux lavandières et prestataires."
+    }
+    ]
+  },
+  "experience": {
+    "title": "Expériences",
+    "subtitle": "Mon parcours professionnel",
+    "onsite": "Sur site",
+    "remote": "Remote",
+    "hybrid": "Hybride",
+    "now": "Aujourd'hui",
+    "items": [
+      {
+        "start": "06/26",
+        "end": "07/26",
+        "position": "Développeur Freelance",
+        "company": "Empreintes",
+        "mode": "remote",
+        "description": "Conception et développement du site vitrine et e-commerce pour cette marque béninoise de maroquinerie en cuir. Stack : React, TypeScript, Django, PostgreSQL."
+      },
+      {
+        "start": "05/26",
+        "end": "now",
+        "position": "Développeur Freelance",
+        "company": "Clɔ̌ avɔ̌",
+        "mode": "remote",
+        "description": "Développement d'une application (PWA) de mise en relation avec des lavandières pour la lessive à domicile et le nettoyage de maisons/bureaux. Stack : React, TypeScript, Django."
+      },
+      {
+        "start": "03/26",
+        "end": "05/26",
+        "position": "Développeur Freelance",
+        "company": "ShopM x Cuisine Store",
+        "mode": "remote",
+        "description": "En tant que créateur et owner du SaaS ShopM, mise en place d'un profil dédié pour Cuisine Store sous forme d'abonnement annuel, pour la gestion de leur boutique (inventaire, stock, caisse, employés)."
+      },
+      {
+        "start": "09/25",
+        "end": "02/26",
+        "position": "Stagiaire Développeur Fullstack",
+        "company": "Uptimise",
+        "mode": "onsite",
+        "description": "Stage professionnel au sein d'une startup béninoise spécialisée dans la gestion RH et paie. Contribution au développement fullstack de la plateforme."
+      },
+      {
+        "start": "04/25",
+        "end": "06/25",
+        "position": "Développeur Fullstack (Stage académique)",
+        "company": "ENEAM",
+        "mode": "onsite",
+        "description": "Développement en binôme d'un logiciel d'évaluation des enseignements dans le cadre du mémoire de fin d'études, actuellement utilisé en remplacement des formulaires Google Forms qui manquaient de centralisation pour la prise de décision."
+      }
+    ]
+  },
+  "education": {
+    "title": "Formation",
+    "subtitle": "Mon parcours académique",
+    "items": [
+      {
+        "year": "2022",
+        "degree": "Baccalauréat Serie C",
+        "school": "College Catholique Les Hibiscus",
+        "city": "Parakou, BENIN"
+      },
+      {
+        "year": "2025",
+        "degree": "Licence en Analyse Informatique et Programmation",
+        "school": "Ecole Nationale d'Economie Appliquee et de Management ENEAM",
+        "city": "Cotonou, BENIN"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Certifications obtenues",
+    "viewLink": "Voir la certification",
+    "items": [
+      { "year": "2024", "name": "Legacy Responsive Design V8", "link": "https://www.freecodecamp.org/certification/abdel_saliou/responsive-web-design" },
+      { "year": "2026", "name": "Scientific Computing with Python", "link": "https://www.freecodecamp.org/certification/abdel_saliou/scientific-computing-with-python-v7" },
+      { "year": "2026", "name": "Legacy JavaScript Algorithms and Data Structures V7", "link": "https://www.freecodecamp.org/certification/abdel_saliou/javascript-algorithms-and-data-structures" }
+    ]
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "subtitle": "Une sélection de projets sur lesquels j'ai travaillé",
+    "filters": {
+      "all": "Tout",
+      "web": "Web",
+      "mobile": "Mobile"
+    },
+    "items": [
+    {
+      "title": "ShopM",
+      "description": "Système de gestion commerciale multi-boutiques (SaaS) permettant à différents commerçants de gérer une ou plusieurs boutiques indépendantes : employés, inventaire, stock et caisse.",
+      "category": "web",
+      "image": "/projects/shopm.png",
+      "technologies": ["Django", "Django REST Framework", "React", "TypeScript", "PostgreSQL", "PWA"]
+    },
+    {
+      "title": "Budget App",
+      "description": "Application mobile de suivi budgétaire personnel pour gérer ses finances et ses dépenses mensuelles.",
+      "category": "mobile",
+      "image": "/projects/budget-app.png",
+      "technologies": ["React Native", "Expo", "Supabase"]
+    },
+    {
+      "title": "Empreintes",
+      "description": "Site vitrine et e-commerce pour Empreintes, marque béninoise de maroquinerie (sacs, pochettes, chaussures, sandales) en cuir, fabriqués localement pour homme et femme.",
+      "category": "web",
+      "image": "/projects/empreintes_shop.png",
+      "technologies": ["React", "TypeScript", "Django", "PostgreSQL"]
+    },
+    {
+      "title": "Clɔ̌ avɔ̌",
+      "description": "Application mobile de mise en relation avec des lavandières pour la lessive à domicile (facturée au kilo) et le nettoyage de maisons ou bureaux, à des prix compétitifs. (Projet en cours de développement)",
+      "category": "web",
+      "image": "/projects/cloavo.png",
+      "technologies": ["React", "TypeScript", "Django", "PWA"]
+    },
+    {
+      "title": "NovaSneak",
+      "description": "Application e-commerce de vente de sneakers avec sélection de la paire et de la pointure, panier de commande et redirection automatique vers WhatsApp pour finaliser l'achat. (Projet en cours de développement)",
+      "category": "web",
+      "image": "/projects/novasneak2.png",
+      "technologies": ["React", "TypeScript", "Django", "PWA"]
+    }
+  ]
+  },
+  "services": {
+    "title": "Mes Services",
+    "subtitle": "Ce que je peux faire pour vous",
+    "items": [
+      { "title": "Développement Frontend", "description": "Interfaces modernes, réactives et performantes avec React, Next.js et Tailwind CSS." },
+      { "title": "Développement Backend", "description": "Architecture serveur robuste, bases de données, logique métier et systèmes évolutifs." },
+      { "title": "Conception d'API", "description": "APIs REST ou GraphQL bien pensées, documentées et sécurisées pour vos applications." },
+      { "title": "Déploiement & DevOps", "description": "Mise en production, CI/CD, hébergement et configuration serveur pour un lancement fiable." },
+      { "title": "Conseil en digitalisation", "description": "Accompagnement pour transformer vos processus métier en solutions digitales efficaces." },
+      { "title": "Applications sur mesure", "description": "Conception d'applications web ou mobile adaptées précisément aux besoins de votre entreprise." },
+      { "title": "UI Design Pixel Perfect", "description": "Interfaces soignées au pixel près, fidèles à la maquette et cohérentes sur tous les écrans." },
+      { "title": "Optimisation des performances", "description": "Audit et amélioration de la vitesse de chargement, du SEO technique et de l'expérience utilisateur." },
+      { "title": "Refonte de site (Redesign)", "description": "Modernisation d'un site existant : design, performance et structure repensés." },
+      { "title": "SEO", "description": "Optimisation du référencement naturel pour améliorer votre visibilité sur les moteurs de recherche." }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Une idée de projet ? Discutons-en.",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer"
+  },
+  "footer": {
+    "rights": "Tous droits réservés."
+  }
+}
