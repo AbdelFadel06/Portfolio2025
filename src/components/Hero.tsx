@@ -14,11 +14,11 @@ export default function Hero() {
   const cvHref = CV_FILES[locale as keyof typeof CV_FILES] ?? CV_FILES.fr;
 
   return (
-    <section className="pt-40 pb-20 flex items-center ">
-      <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12">
+    <section className="pt-28 sm:pt-32 md:pt-40 pb-16 md:pb-20 flex items-center">
+      <div className="max-w-4xl mx-auto w-full px-6 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-10 md:gap-12">
 
         {/* Colonne texte */}
-        <div className="flex-1 text-center md:text-left">
+        <div className="order-2 md:order-1 flex-1 text-center md:text-left">
           <p className="text-blue-900 text-lg mb-2">{t('greeting')}</p>
 
           <h1 className="text-4xl md:text-5xl font-bold leading-tight ">
@@ -74,9 +74,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Photo ronde à droite */}
-        <div className="flex-shrink-0">
-          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-slate-700">
+        {/* Photo ronde */}
+        <div className="order-1 md:order-2 flex-shrink-0 self-center">
+          <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-slate-700">
             <Image
               src="/projects/pp1.jpeg"
               alt="Photo de profil"

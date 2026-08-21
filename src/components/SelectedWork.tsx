@@ -14,7 +14,7 @@ export default function SelectedWork() {
   const items = t.raw('items') as WorkItem[];
 
   return (
-    <section id="selected-work" className="py-20 max-w-4xl mx-auto">
+    <section id="selected-work" className="py-20 max-w-4xl mx-auto px-6">
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-blue-900">{t('title')}</h2>
         {/* <p className="text-slate-400 mt-2 ">{t('subtitle')}</p> */}

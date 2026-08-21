@@ -30,7 +30,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="bg-[#0a0a0a] text-white antialiased">
+      <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}

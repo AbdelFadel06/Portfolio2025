@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={() => router.replace(pathname, { locale: otherLocale })}
-      className="text-sm text-blue-900 border border-white/20 rounded-full px-3 py-1 hover:bg-blue-900 hover:text-white transition-colors"
+      className="text-xs sm:text-sm text-blue-900 border border-white/20 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 hover:bg-blue-900 hover:text-white transition-colors"
     >
       {otherLocale.toUpperCase()}
     </button>

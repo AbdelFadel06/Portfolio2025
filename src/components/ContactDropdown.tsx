@@ -22,7 +22,7 @@ export default function ContactDropdown() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 transition-colors ${open ? 'text-blue-900' : 'hover:text-slate-700'}`}
+        className={`flex items-center gap-1 whitespace-nowrap transition-colors ${open ? 'text-blue-900' : 'hover:text-slate-700'}`}
       >
         {t('contact').toUpperCase()}
         <svg
@@ -36,7 +36,7 @@ export default function ContactDropdown() {
       </button>
 
       {open && (
-        <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-lg overflow-hidden">
+        <div className="absolute top-full left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-0 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-lg overflow-hidden">
           <a
             href="https://wa.me/22956927899"
             target="_blank"
