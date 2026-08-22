@@ -46,12 +46,6 @@ export default function Hero() {
               {t('ctaWork')}
             </Link>
 
-             <a href="#contact"
-              className="border border-slate-300 px-6 py-3 font-semibold text-slate-500 hover:border-blue-900 hover:text-blue-900 rounded-sm transition-all duration-200 ease-in-out"
-            >
-              {t('ctaContact')}
-            </a>
-
             <a href={cvHref}
               download
               className="flex items-center gap-2 border border-slate-300 px-6 py-3 font-semibold text-slate-500 hover:border-blue-900 hover:text-blue-900 rounded-sm transition-all duration-200 ease-in-out"
