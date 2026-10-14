@@ -7,6 +7,7 @@ type WorkItem = {
   description: string;
   problem: string;
   impact: string;
+  link?: string;
 };
 
 export default function SelectedWork() {
@@ -26,7 +27,21 @@ export default function SelectedWork() {
             <div className="flex flex-col md:flex-row gap-6 py-8">
               {/* Nom à gauche */}
               <div className="md:w-1/4 flex-shrink-0">
-                <h3 className="text-blue-900 font-semibold text-lg">{item.name}</h3>
+                <h3 className="text-blue-900 font-semibold text-lg">
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 hover:underline underline-offset-4"
+                    >
+                      {item.name}
+                      <span aria-hidden="true" className="text-sm">↗</span>
+                    </a>
+                  ) : (
+                    item.name
+                  )}
+                </h3>
               </div>
 
               {/* Contenu à droite */}

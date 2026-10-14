@@ -10,6 +10,7 @@ type Project = {
   category: 'web' | 'mobile';
   image: string;
   technologies: string[];
+  link?: string;
 };
 
 export default function ProjetsPage() {
@@ -61,6 +62,7 @@ export default function ProjetsPage() {
                 description={project.description}
                 image={project.image}
                 technologies={project.technologies}
+                link={project.link}
               />
               {index < filteredItems.length - 1 && (
                 <hr className="border-slate-200" />

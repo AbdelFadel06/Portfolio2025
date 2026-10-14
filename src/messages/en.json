@@ -28,24 +28,34 @@
         "name": "ShopM",
         "description": "Multi-store commercial management system (SaaS) allowing different merchants to manage one or several independent stores: employees, inventory, stock, and checkout/point of sale.",
         "problem": "Lack of an accessible tool enabling independent merchants to digitize and centralize the management of their store(s), regardless of number or ownership.",
-        "impact": "Simplifies merchants' daily operations, reduces stock errors, and improves sales and employee tracking, store by store."
+        "impact": "Simplifies merchants' daily operations, reduces stock errors, and improves sales and employee tracking, store by store.",
+        "link": "https://shopm.abdelsaliou.dev/"
+      },
+      {
+        "name": "B&F — Delivery Notes & Invoices",
+        "description": "Tool for generating proforma invoices and delivery notes: just upload the company's letterhead and fill in the details. The product section can be filled automatically via CSV import, with stamp option, duplication and document download.",
+        "problem": "Businesses fill out their proformas and delivery notes manually in Word, copying the letterhead and product list every time, which is slow and error-prone.",
+        "impact": "Cuts document preparation down to a few minutes, guarantees a layout consistent with the company's identity, and lets users manage several companies and contracts from a single workspace.",
+        "link": "https://bordereau.abdelsaliou.dev/"
       },
       {
         "name": "Budget_App",
         "description": "Mobile app for personal budget tracking to manage finances and monthly expenses.",
         "problem": "Lack of visibility into spending habits, making it difficult to manage a monthly budget.",
         "impact": "Helps users better control their finances and reduce unnecessary spending through clear, regular tracking."
-      },{
+      },
+      {
         "name": "Empreintes",
         "description": "Showcase and e-commerce website for Empreintes, a Beninese leather goods brand (bags, pouches, shoes, sandals) locally handcrafted for men and women.",
         "problem": "Lack of an online platform for the brand to share its story, vision, and identity, while giving customers direct access to the catalog and ordering process.",
         "impact": "Strengthens the brand's visibility and credibility through an experience true to its visual identity, while making product discovery and online ordering easier."
-    },{
+      },
+      {
         "name": "Clɔ̌ avɔ̌",
         "description": "Mobile web/app connecting users with laundresses for at-home laundry service (billed per kilo) and house or office cleaning, at competitive prices. (Project currently in development)",
         "problem": "Lack of a simple, reliable solution for booking at-home laundry or cleaning services with clear, accessible pricing.",
         "impact": "Makes on-demand laundry and cleaning services more accessible, while offering laundresses and service providers a flexible source of income."
-    }
+      }
     ]
   },
   "experience": {
@@ -56,6 +66,14 @@
     "hybrid": "Hybrid",
     "now": "Now",
     "items": [
+      {
+        "start": "09/26",
+        "end": "now",
+        "position": "Junior Consultant",
+        "company": "Baromètre",
+        "mode": "hybrid",
+        "description": "Fullstack web developer working as a consultant at Baromètre."
+      },
       {
         "start": "06/26",
         "end": "07/26",
@@ -121,67 +139,153 @@
     "subtitle": "Certifications earned",
     "viewLink": "View certification",
     "items": [
-      { "year": "2024", "name": "Legacy Responsive Design V8", "link": "https://www.freecodecamp.org/certification/abdel_saliou/responsive-web-design" },
-      { "year": "2026", "name": "Scientific Computing with Python", "link": "https://www.freecodecamp.org/certification/abdel_saliou/scientific-computing-with-python-v7" },
-      { "year": "2026", "name": "Legacy JavaScript Algorithms and Data Structures V7", "link": "https://www.freecodecamp.org/certification/abdel_saliou/javascript-algorithms-and-data-structures" }
+      {
+        "year": "2024",
+        "name": "Legacy Responsive Design V8",
+        "link": "https://www.freecodecamp.org/certification/abdel_saliou/responsive-web-design"
+      },
+      {
+        "year": "2026",
+        "name": "Scientific Computing with Python",
+        "link": "https://www.freecodecamp.org/certification/abdel_saliou/scientific-computing-with-python-v7"
+      },
+      {
+        "year": "2026",
+        "name": "Legacy JavaScript Algorithms and Data Structures V7",
+        "link": "https://www.freecodecamp.org/certification/abdel_saliou/javascript-algorithms-and-data-structures"
+      }
     ]
   },
   "projects": {
     "title": "My Projects",
     "subtitle": "A selection of projects I've worked on",
-    "filters": { "all": "All", "web": "Web", "mobile": "Mobile" },
+    "filters": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile"
+    },
     "items": [
-    {
-      "title": "ShopM",
-      "description": "Multi-store commercial management system (SaaS) allowing different merchants to manage one or several independent stores: employees, inventory, stock, and checkout/point of sale.",
-      "category": "web",
-      "image": "/projects/shopm.png",
-      "technologies": ["Django", "Django REST Framework", "React", "TypeScript", "PostgreSQL", "PWA"]
-    },
-    {
-      "title": "Budget App",
-      "description": "Mobile app for personal budget tracking to manage finances and monthly expenses.",
-      "category": "mobile",
-      "image": "/projects/budget-app.png",
-      "technologies": ["React Native", "Expo", "Supabase"]
-    },
-    {
-      "title": "Empreintes",
-      "description": "Showcase and e-commerce website for Empreintes, a Beninese leather goods brand (bags, pouches, shoes, sandals) locally handcrafted for men and women.",
-      "category": "web",
-      "image": "/projects/empreintes_shop.png",
-      "technologies": ["React", "TypeScript", "Django", "PostgreSQL"]
-    },
-    {
-      "title": "Clɔ̌ avɔ̌",
-      "description": "Mobile app connecting users with laundresses for at-home laundry service (billed per kilo) and house or office cleaning, at competitive prices. (Project currently in development)",
-      "category": "web",
-      "image": "/projects/cloavo.png",
-      "technologies": ["React", "TypeScript", "Django", "PWA"]
-    },
-    {
-      "title": "NovaSneak",
-      "description": "E-commerce app for selling sneakers, featuring pair and size selection, an order cart, and automatic redirection to WhatsApp to complete the purchase. (Project currently in development)",
-      "category": "web",
-      "image": "/projects/novasneak2.png",
-      "technologies": ["React", "TypeScript", "Django", "PWA"]
-    }
-  ]
+      {
+        "title": "ShopM",
+        "description": "Multi-store commercial management system (SaaS) allowing different merchants to manage one or several independent stores: employees, inventory, stock, and checkout/point of sale.",
+        "category": "web",
+        "image": "/projects/shopm.png",
+        "technologies": [
+          "Django",
+          "Django REST Framework",
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "PWA"
+        ],
+        "link": "https://shopm.abdelsaliou.dev/"
+      },
+      {
+        "title": "B&F — Delivery Notes & Invoices",
+        "description": "Tool for generating proforma invoices and delivery notes: just upload the company's letterhead and fill in the details. The product section can be filled automatically via CSV import, with stamp option, duplication and document download.",
+        "category": "web",
+        "image": "/projects/bordereau.png",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Django"
+        ],
+        "link": "https://bordereau.abdelsaliou.dev/"
+      },
+      {
+        "title": "Budget App",
+        "description": "Mobile app for personal budget tracking to manage finances and monthly expenses.",
+        "category": "mobile",
+        "image": "/projects/budget-app.png",
+        "technologies": [
+          "React Native",
+          "Expo",
+          "Supabase"
+        ]
+      },
+      {
+        "title": "Empreintes",
+        "description": "Showcase and e-commerce website for Empreintes, a Beninese leather goods brand (bags, pouches, shoes, sandals) locally handcrafted for men and women.",
+        "category": "web",
+        "image": "/projects/empreintes_shop.png",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Django",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "title": "Clɔ̌ avɔ̌",
+        "description": "Mobile app connecting users with laundresses for at-home laundry service (billed per kilo) and house or office cleaning, at competitive prices. (Project currently in development)",
+        "category": "web",
+        "image": "/projects/cloavo.png",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Django",
+          "PWA"
+        ]
+      },
+      {
+        "title": "NovaSneak",
+        "description": "Sneaker e-commerce store in Cotonou and Calavi: filterable catalog, size, box and color selection, cart and order checkout via WhatsApp. Traffic analytics tracked with Umami.",
+        "category": "web",
+        "image": "/projects/novasneak.png",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Django",
+          "Umami"
+        ],
+        "link": "https://novasneak.abdelsaliou.dev/"
+      }
+    ]
   },
   "services": {
     "title": "My Services",
     "subtitle": "What I can do for you",
     "items": [
-      { "title": "Frontend Development", "description": "Modern, responsive and performant interfaces with React, Next.js and Tailwind CSS." },
-      { "title": "Backend Development", "description": "Robust server architecture, databases, business logic and scalable systems." },
-      { "title": "API Design", "description": "Well-designed, documented and secure REST or GraphQL APIs for your applications." },
-      { "title": "Deployment & DevOps", "description": "Production setup, CI/CD, hosting and server configuration for a reliable launch." },
-      { "title": "Digital Transformation Consulting", "description": "Support to turn your business processes into efficient digital solutions." },
-      { "title": "Custom Applications", "description": "Web or mobile applications designed precisely for your company's needs." },
-      { "title": "Pixel Perfect UI Design", "description": "Carefully crafted interfaces, faithful to the design and consistent across all screens." },
-      { "title": "Performance Optimization", "description": "Audit and improvement of loading speed, technical SEO and user experience." },
-      { "title": "Website Redesign", "description": "Modernization of an existing site: design, performance and structure rethought." },
-      { "title": "SEO", "description": "Search engine optimization to improve your visibility on search engines." }
+      {
+        "title": "Frontend Development",
+        "description": "Modern, responsive and performant interfaces with React, Next.js and Tailwind CSS."
+      },
+      {
+        "title": "Backend Development",
+        "description": "Robust server architecture, databases, business logic and scalable systems."
+      },
+      {
+        "title": "API Design",
+        "description": "Well-designed, documented and secure REST or GraphQL APIs for your applications."
+      },
+      {
+        "title": "Deployment & DevOps",
+        "description": "Production setup, CI/CD, hosting and server configuration for a reliable launch."
+      },
+      {
+        "title": "Digital Transformation Consulting",
+        "description": "Support to turn your business processes into efficient digital solutions."
+      },
+      {
+        "title": "Custom Applications",
+        "description": "Web or mobile applications designed precisely for your company's needs."
+      },
+      {
+        "title": "Pixel Perfect UI Design",
+        "description": "Carefully crafted interfaces, faithful to the design and consistent across all screens."
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "Audit and improvement of loading speed, technical SEO and user experience."
+      },
+      {
+        "title": "Website Redesign",
+        "description": "Modernization of an existing site: design, performance and structure rethought."
+      },
+      {
+        "title": "SEO",
+        "description": "Search engine optimization to improve your visibility on search engines."
+      }
     ]
   },
   "contact": {
